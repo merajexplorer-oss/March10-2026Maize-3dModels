@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>&lt;Meraj AR &gt;</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="demo-styles.css" />
+    
+    <!-- 💁 Include both scripts below to support all browsers! -->
+    <!-- Loads <model-viewer> for modern browsers: -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <!-- Loads <model-viewer> for old browsers like IE11: -->
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+    <!-- Web Components polyfill to support Edge and Firefox < 63 -->
+        <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
+    <!-- Intersection Observer polyfill for better performance in Safari and IE11 -->
+        <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+    <!-- Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+        <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script>
+    <!-- The :focus-visible polyfill removes the focus ring for some input types -->
+    <script  src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+    
+  </head>
+  <body>
+    <div id="card">
+        <div class="attribution" id="play-controls">
+            <a id="ar-link" href="#">
+              <img
+                class="ar-launch-image"
+                src="1 (14).jpg"
+                alt="Tap to launch AR"
+              />
+        </div>
+
+      <script>
+         const arLink = document.getElementById('ar-link');
+        
+              // URLs for Android and iOS
+              const androidIntentURL =
+                'intent://arvr.google.com/scene-viewer/1.2?' +
+                'file=https://raw.githubusercontent.com/merajexplorer-oss/Oct11-2025_ARCustom/refs/heads/main/TextStandy.glb' +
+                '&title=Meraj+AR' +
+                '&mode=ar_only' +
+                '&sound=https://raw.githubusercontent.com/merajexplorer-oss/Oct11-2025_ARCustom/main/abnnn.mp3' +
+                '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;' +
+                'S.browser_fallback_url=https://arvr.google.com/scene-viewer?' +
+                'file=https://raw.githubusercontent.com/merajexplorer-oss/Oct11-2025_ARCustom/refs/heads/main/TextStandy.glb' +
+                '&title=Meraj+AR' +
+                '&mode=ar_only' +
+                '&sound=https://raw.githubusercontent.com/merajexplorer-oss/Oct11-2025_ARCustom/main/abnnn.mp3;end;';
+        
+              const iosUSDZLink = 
+                'https://raw.githubusercontent.com/merajexplorer-oss/Oct11-2025_ARCustom/refs/heads/main/Cartoon_Bird.usdz'; 
+        
+              // Detect iOS
+              const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        
+              if (isIOS) {
+                arLink.setAttribute('rel', 'ar');
+                arLink.setAttribute('href', iosUSDZLink);
+              } else {
+                arLink.setAttribute('href', androidIntentURL);
+              }
+      
+      </script>
+      <section class="attribution">
+        <span>
+          <h1>Meraj AR</h1>
+          </span>
+      </section>
+    </div>
+  </body>
+</html>
+
+
+
+
